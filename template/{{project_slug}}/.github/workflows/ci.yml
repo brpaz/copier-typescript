@@ -43,7 +43,7 @@ jobs:
         run: pnpm run test
 
       - name: Upload test artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.2
         if: always()
         with:
           name: unit-test-results
@@ -73,7 +73,7 @@ jobs:
         run: pnpm run build
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: dist
           path: dist
