@@ -1,4 +1,4 @@
-# Copier FluxCD
+# Copier Typescript
 
 <p align="center">
 
