@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v5.0.1
 
       - name: Setup Node with pnpm
         uses: ./.github/actions/setup-node-env
@@ -62,7 +62,7 @@ jobs:
     needs: test
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v5.0.1
 
       - name: Setup Node with pnpm
         uses: ./.github/actions/setup-node-env
@@ -91,7 +91,7 @@ jobs:
       packages: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v5.0.1
 
       - name: Setup Node with pnpm
         uses: ./.github/actions/setup-node-env
