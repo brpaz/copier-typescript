@@ -17,8 +17,7 @@
       "matchStrings": [
         "uses:\\s*(?<depName>[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+)@(?<currentValue>[a-zA-Z0-9_.-]+)"
       ],
-      "datasourceTemplate": "github-tags",
-      "automerge": true
+      "datasourceTemplate": "github-tags"
     },
     {
       "fileMatch": ["^template/{{project_slug}}/package\\.json\\.jinja$"],
@@ -26,8 +25,7 @@
         "\\\"engines\\\"\\s*:\\s*\\{[\\s\\S]*?\\\"node\\\"\\s*:\\s*\\\"(?<currentValue>[^\\\"]+)\\\""
       ],
       "depNameTemplate": "node",
-      "datasourceTemplate": "node",
-      "automerge": true
+      "datasourceTemplate": "node"
     }
   ],
   "prHourlyLimit": 5,
