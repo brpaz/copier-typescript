@@ -42,7 +42,7 @@ jobs:
         run: pnpm run test
 
       - name: Upload test artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: unit-test-results
@@ -72,7 +72,7 @@ jobs:
         run: pnpm run build
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist
@@ -98,7 +98,7 @@ jobs:
           pnpm-version: ${{ env.PNPM_VERSION }}
 
       - name: Download build artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist
