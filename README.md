@@ -13,7 +13,7 @@
 
 - [Devenv](https://devenv.sh/) to provision a consistent development environment.
 - [PNPM](https://pnpm.io/) as the package manager
-- [Husky](https://typicode.github.io/husky/#/) to manage Git hooks
+- [Lefthook](https://evilmartians.com/chronicles/lefthook) to manage Git hooks
 - [ESLint](https://eslint.org/) to enforce code quality
 - [Prettier](https://prettier.io/) to enforce code formatting
 - [Vitest](https://vitest.dev/) as the testing framework
