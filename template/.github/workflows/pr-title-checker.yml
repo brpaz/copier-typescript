@@ -1,4 +1,4 @@
-name: Check PR title
+name: PR Title Checker
 
 on:
   pull_request:
@@ -18,9 +18,8 @@ permissions:
 
 jobs:
   title-checker:
-    name: Check PR title
+    name: PR Title Checker
     runs-on: ubuntu-latest
-
     steps:
       - uses: aslafy-z/conventional-pr-title-action@v3
         env:

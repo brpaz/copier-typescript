@@ -33,14 +33,7 @@ jobs:
 
       - name: Run generator
         id: generator
-        run: |
-          tmpdir=$(mktemp -d)
-          copier copy -r HEAD --force --trust --skip-tasks \
-            -d project_name="Test Project" \
-            -d project_description="A test generated project" \
-            -d github_repository="acme/test-project" \
-            . "$tmpdir"
-          echo "output_dir=$tmpdir/test-project" >> $GITHUB_OUTPUT
+        run: bash gen-test-project.sh
 
       - name: Check generated files
         run: |

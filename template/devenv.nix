@@ -16,7 +16,9 @@
   };
 
   # https://devenv.sh/packages/
-  packages = with pkgs; [];
+  packages = with pkgs; [
+    lefthook
+  ];
 
   # https://devenv.sh/scripts/
   scripts.install_deps.exec = ''
@@ -25,6 +27,14 @@
   '';
 
   enterShell = ''
+
+    if [ -f .env ]; then
+      echo "🔐 Creating env file"
+      cp .env.example .env
+    fi
+
+    lefthook install
+
     install_deps
   '';
 
@@ -37,6 +47,7 @@
   # https://devenv.sh/tests/
   enterTest = ''
     echo "Running tests..."
+    pnpm lint
     pnpm test
   '';
 

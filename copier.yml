@@ -17,15 +17,15 @@ project_description:
   type: str
   help: A short description of your project.
 
-github_repository:
+git_repo_slug:
   type: str
   help: GitHub repository identifier (username/repo-name).
   validator: >-
-    {% if not (github_repository | regex_search('^[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+$')) %}
-    github_repository must be in the format 'username/repo-name'.
+    {% if not (git_repo_slug | regex_search('^[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+$')) %}
+    git_repo_slug must be in the format 'username/repo-name'.
     {% endif %}
 
-git_url:
+git_repo_url:
   type: str
   help: The homepage URL for your project.
-  default: "https://github.com/{{ github_repository }}"
+  default: "https://github.com/{{ git_repo_slug }}"
