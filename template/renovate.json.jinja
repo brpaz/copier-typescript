@@ -1,10 +1,25 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":automergeMinor",
+    "security:minimumReleaseAgeNpm",
+    ":maintainLockFilesWeekly",
+    ":enableVulnerabilityAlertsWithLabel(security)"
+  ],
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "matchDepTypes": ["dependencies"],
+      "automerge": false
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions"
+    }
   ],
   "prHourlyLimit": 5,
-  "prConcurrentLimit": 20,
+  "prConcurrentLimit": 10,
   "labels": [
     "dependencies"
   ],

@@ -11,8 +11,11 @@ pre-commit:
       glob: 'src/*.ts'
       run: eslint {staged_files} --fix
       stage_fixed: true
+
+pre-push:
+  commands:
     test:
-      run: cargo test --all
+      run: pnpm test
 
 # Commit-msg hooks - run after commit message is entered, but before commit is finalized
 commit-msg:

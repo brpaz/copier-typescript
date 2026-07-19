@@ -1,0 +1,39 @@
+# {{ project_name }}
+
+{{ project_description }}
+
+TypeScript library. Package manager is pnpm, version pinned via `packageManager` in `package.json` (Corepack-managed — don't install a different pnpm globally).
+
+## Commands
+
+- `pnpm build` — bundle with tsdown (`src/index.ts` → `dist`, cjs+esm+dts)
+- `pnpm dev` — tsdown watch mode
+- `pnpm test` / `pnpm test:watch` / `pnpm test:ui` — vitest, specs live at `src/**/*.spec.ts` (colocated with source, not a separate `tests/` dir)
+- `pnpm lint` / `pnpm lint:fix` — eslint over `src/**/*.ts`
+- `pnpm format` / `pnpm format:check` — prettier over `src/**/*.{ts,tsx}`
+- `pnpm typecheck` — `tsc --noEmit`
+- `pnpm docs:dev` / `pnpm docs:build` / `pnpm docs:preview` — VitePress docs site
+
+Run lint, format:check, typecheck, and test before considering a change done — CI (`.github/workflows/ci.yml`) gates on all four plus build.
+
+## Conventions
+
+- ESLint flat config (`eslint.config.js`): `@eslint/js` recommended + `typescript-eslint` recommended, `eslint-config-prettier` last to defer style to Prettier.
+- Prettier (`prettier.config.js`): no semicolons, single quotes, es5 trailing commas.
+- `tsconfig.json`: `strict`, `noUnusedLocals`, `verbatimModuleSyntax`, `isolatedModules` — write code that satisfies these, don't relax them to unblock a change.
+- Commit messages: Conventional Commits, enforced by commitlint on the `commit-msg` git hook (every commit, not just push).
+- Test coverage reports go to `reports/coverage`, test reports to `reports/tests` (vitest.config.ts) — gitignored, don't commit them.
+
+## Git hooks (lefthook.yml)
+
+- `pre-commit`: prettier + eslint `--fix` on staged `src/*.ts`, re-staged automatically.
+- `pre-push`: `pnpm test`.
+- `commit-msg`: commitlint.
+
+## Dev environment
+
+devenv + direnv (`devenv.nix`, `.envrc`). `direnv allow` loads Node 24 + pnpm via Corepack automatically. Don't hand-install Node/pnpm outside this shell for this project.
+
+## Release
+
+Publishing happens only through the `release` job in `ci.yml`, triggered by a published GitHub Release: bumps `package.json` version to the release tag, `pnpm publish`, updates `CHANGELOG.md`. Don't publish manually.

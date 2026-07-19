@@ -11,7 +11,6 @@
     };
     pnpm = {
       enable = true;
-      package = pkgs.pnpm;
     };
   };
 
@@ -27,14 +26,7 @@
   '';
 
   enterShell = ''
-
-    if [ -f .env ]; then
-      echo "🔐 Creating env file"
-      cp .env.example .env
-    fi
-
     lefthook install
-
     install_deps
   '';
 
