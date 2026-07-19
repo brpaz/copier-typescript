@@ -2,13 +2,18 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":automergeMinor",
     "security:minimumReleaseAgeNpm",
     ":maintainLockFilesWeekly",
     ":enableVulnerabilityAlertsWithLabel(security)"
   ],
-  "platformAutomerge": true,
   "packageRules": [
+    {
+      "description": "Group and automerge non-major updates",
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "non-major updates",
+      "automerge": true,
+      "platformAutomerge": true
+    },
     {
       "matchDepTypes": ["dependencies"],
       "automerge": false
