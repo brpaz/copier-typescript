@@ -1,23 +1,44 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "npm": {
-    "managerFilePatterns": ["/(^|/)package\\.json$/", "/(^|/)package\\.json\\.jinja$/"]
+    "managerFilePatterns": [
+      "/(^|/)package\\.json$/",
+      "/(^|/)package\\.json\\.jinja$/"
+    ]
   },
   "github-actions": {
-    "managerFilePatterns": ["/(^|/)\\.github/workflows/[^/]+\\.ya?ml$/"]
+    "managerFilePatterns": [
+      "/(^|/)\\.github/workflows/[^/]+\\.ya?ml$/"
+    ]
   },
   "prHourlyLimit": 5,
   "prConcurrentLimit": 20,
-  "labels": ["dependencies"],
-  "reviewers": ["brpaz"],
+  "labels": [
+    "dependencies"
+  ],
+  "reviewers": [
+    "brpaz"
+  ],
   "packageRules": [
     {
       "description": "Group and automerge non-major updates",
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "groupName": "non-major updates",
       "automerge": true,
       "platformAutomerge": true
+    },
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "github-actions"
     }
-  ]
+  ],
+  "minimumReleaseAge": "3 days"
 }
