@@ -18,7 +18,7 @@ runs:
       with:
         version: ${{ inputs.pnpm-version }}
 
-    - uses: actions/setup-node@v6
+    - uses: actions/setup-node@v7
       with:
         node-version-file: ".node-version"
         cache: pnpm
